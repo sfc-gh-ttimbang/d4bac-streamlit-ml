@@ -18,6 +18,8 @@ def create_session():
             "account": st.secrets.sf_credentials.account,
             "user": st.secrets.sf_credentials.user,
             "password": st.secrets.sf_credentials.password,
+            "database":"DASH_DB",
+            "schema":"DASH_SCHEMA",
             "role":"ACCOUNTADMIN",
             "warehouse":"DASH_L"
         }
