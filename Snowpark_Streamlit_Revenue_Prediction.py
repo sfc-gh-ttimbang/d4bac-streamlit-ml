@@ -18,8 +18,8 @@ def create_session():
             "account": st.secrets.sf_credentials.account,
             "user": st.secrets.sf_credentials.user,
             "password": st.secrets.sf_credentials.password,
-            "role":"TASTY_DATA_ENGINEER",
-            "warehouse":"TASTY_DE_WH"
+            "role":"ACCOUNTADMIN",
+            "warehouse":"DASH_L"
         }
         session = Session.builder.configs(connection_parameters).create()
         st.session_state['snowpark_session'] = session
