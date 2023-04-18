@@ -14,7 +14,14 @@ APP_ICON_URL = "https://i.imgur.com/dBDOHH3.png"
 # Function to create Snowflake Session to connect to Snowflake
 def create_session():
     if "snowpark_session" not in st.session_state:
-        session = Session.builder.configs(json.load(open("connection.json"))).create()
+        connection_parameters = {
+            "account": st.secrets.sf_credentials.account,
+            "user": st.secrets.sf_credentials.user,
+            "password": st.secrets.sf_credentials.password,
+            "role":"TASTY_DATA_ENGINEER",
+            "warehouse":"TASTY_DE_WH"
+        }
+        session = Session.builder.configs(connection_parameters).create()
         st.session_state['snowpark_session'] = session
     else:
         session = st.session_state['snowpark_session']
